@@ -10,6 +10,61 @@ AspectJ를 이용하면 일반 인스턴스를 생성하면서도 스프링의 I
 
 > Load-time weaving 설정에 필요한 파일은 'ext_lib/spring-instrument.jar'에 두웠다.
 
+## 설정 방법
+
+1. pom.xml에 설정 추가한다.
+```xml
+...
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aspects</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-instrument</artifactId>
+</dependency>
+...
+```
+
+2. Java Config에 EnableXXX 어노테이션 추가
+```java
+@RestController
+@EnableSpringConfigured
+@EnableLoadTimeWeaving
+@SpringBootApplication
+public class ConfigurableSampleApplication {
+    ...
+}
+```
+
+3. IoC를 해야하는 클래스에 @Configurable 어노테이션 추가
+```java
+...
+
+@Configurable(preConstruction = true)
+public class Hello {
+
+    @Autowired
+    private FooService fooService;
+
+    public FooService getFooService() {
+        return fooService;
+    }
+}
+
+```
+
+4. [Load-time weaving 설정](https://docs.spring.io/spring/docs/4.3.12.RELEASE/spring-framework-reference/htmlsingle/#aop-aj-ltw)을
+참고해서 -javaagent 설정
+
+5. new로 인스턴스 생성해서 사용
+
 
 ## 참고
 
