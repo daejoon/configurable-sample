@@ -8,7 +8,7 @@
 
 AspectJ를 이용하면 일반 인스턴스를 생성하면서도 스프링의 IoC를 이용할수 있다.
 
-> Load-time weaving 설정에 필요한 파일은 'ext_lib/spring-instrument.jar'에 두웠다.
+> Load-time weaving 설정에 필요한 파일은 'ext_lib/spring-instrument.jar'에 두었다.
 
 ## 설정 방법
 
