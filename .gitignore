@@ -148,4 +148,5 @@ local.properties
 hs_err_pid*
 
 !ext_lib/spring-instrument.jar
+!maven-wrapper.jar
 
