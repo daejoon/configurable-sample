@@ -63,6 +63,13 @@ public class Hello {
 4. [Load-time weaving 설정](https://docs.spring.io/spring/docs/4.3.12.RELEASE/spring-framework-reference/htmlsingle/#aop-aj-ltw)을
 참고해서 -javaagent 설정
 
+현재 프로젝트 설정
+
+```
+-javaagent:./ext_lib/spring-instrument.jar
+```
+
+
 5. new로 인스턴스 생성해서 사용
 
 
